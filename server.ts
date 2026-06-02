@@ -213,13 +213,21 @@ function loadDatabase(): DatabaseSchema {
     if (fs.existsSync(DB_FILE)) {
       const raw = fs.readFileSync(DB_FILE, "utf-8");
       const parsed = JSON.parse(raw);
-      if (!parsed.users) parsed.users = [];
+      if (!parsed.amvs || !Array.isArray(parsed.amvs) || parsed.amvs.length === 0) {
+        parsed.amvs = [...DEFAULT_AMVS];
+      }
+      if (!parsed.chats || !Array.isArray(parsed.chats) || parsed.chats.length === 0) {
+        parsed.chats = [...DEFAULT_CHATS];
+      }
+      if (!parsed.users || !Array.isArray(parsed.users)) {
+        parsed.users = [];
+      }
       return parsed;
     }
   } catch (err) {
     console.error("Error reading database file, using fallback:", err);
   }
-  return { amvs: DEFAULT_AMVS, chats: DEFAULT_CHATS, users: [] };
+  return { amvs: [...DEFAULT_AMVS], chats: [...DEFAULT_CHATS], users: [] };
 }
 
 // Helper to save DB
@@ -493,6 +501,10 @@ app.post("/api/auth/logout", (req, res) => {
 
 // 1. Get AMVs
 app.get("/api/amvs", (req, res) => {
+  if (!db.amvs || db.amvs.length === 0) {
+    db.amvs = [...DEFAULT_AMVS];
+    saveDatabase(db);
+  }
   res.json(db.amvs);
 });
 
@@ -622,6 +634,10 @@ app.delete("/api/amvs/:amvId/comments/:commentId", (req, res) => {
 
 // 7. Get chat messages
 app.get("/api/chat", (req, res) => {
+  if (!db.chats || db.chats.length === 0) {
+    db.chats = [...DEFAULT_CHATS];
+    saveDatabase(db);
+  }
   res.json(db.chats);
 });
 
