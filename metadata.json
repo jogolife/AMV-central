@@ -1,0 +1,6 @@
+{
+  "name": "AMV Hubushido",
+  "description": "Um portal incrível para descobrir, assistir e compartilhar as melhores AMVs do mundo dos animes. Filtre por anime, estilo e popularidade, converse em tempo real e use IA para detectar tags automaticamente.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
