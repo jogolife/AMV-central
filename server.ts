@@ -936,6 +936,12 @@ Produce structured recommendations. Match the anime(s) accurately. Categorize st
   }
 });
 
+// Explicit AdSense ads.txt route for crawler verification
+app.get("/ads.txt", (req, res) => {
+  res.setHeader("Content-Type", "text/plain");
+  res.send("google.com, pub-2750800370490797, DIRECT, f08c47fec0942fa0");
+});
+
 // ================= VITE BACKEND INTEGRATION =================
 
 async function startServer() {
