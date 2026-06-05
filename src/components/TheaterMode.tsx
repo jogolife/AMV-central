@@ -22,6 +22,7 @@ import {
   Smartphone
 } from "lucide-react";
 import { AMV, Comment, CurrentUser } from "../types";
+import GoogleAdSenseAd from "./GoogleAdSenseAd";
 
 interface TheaterModeProps {
   amv: AMV;
@@ -209,6 +210,13 @@ export default function TheaterMode({
               </div>
             </div>
           </div>
+
+          {/* Google AdSense Horizontal Slot - Related to site */}
+          <GoogleAdSenseAd 
+            slot="1234567890" 
+            variant="horizontal" 
+            className="my-3"
+          />
 
           {/* Interactive Comments Drawer */}
           <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-4 shadow-xl backdrop-blur-md">
@@ -494,6 +502,13 @@ export default function TheaterMode({
               </button>
             </div>
           )}
+
+          {/* Google AdSense Sidebar block */}
+          <GoogleAdSenseAd 
+            slot="5678901234" 
+            variant="square" 
+            className="bg-white/5 border border-white/10 mt-4"
+          />
 
         </div>
 

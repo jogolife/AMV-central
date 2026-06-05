@@ -29,6 +29,7 @@ import ChatRoom from "./components/ChatRoom";
 import StatsDashboard from "./components/StatsDashboard";
 import UploadForm from "./components/UploadForm";
 import AdminLoginModal from "./components/AdminLoginModal";
+import GoogleAdSenseAd from "./components/GoogleAdSenseAd";
 
 // Helper for loading user session or preparing offline identities
 const DEFAULT_USER_NAME = `Ronin_${Math.floor(Math.random() * 900) + 100}`;
@@ -740,6 +741,13 @@ export default function App() {
                 })}
               </div>
             </div>
+
+            {/* Google AdSense Horizontal Feed Ad - High visual density */}
+            <GoogleAdSenseAd 
+              slot="2468135790" 
+              variant="horizontal" 
+              className="my-2"
+            />
 
             {/* Recent list layout */}
             <div className="space-y-4.5 pt-6">
